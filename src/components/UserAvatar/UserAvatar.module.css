@@ -1,4 +1,5 @@
 .avatarContainer {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,4 +15,12 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+}
+
+.tooltipWrapper {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  z-index: 1000;
+  transform: translateY(-50%);
 }

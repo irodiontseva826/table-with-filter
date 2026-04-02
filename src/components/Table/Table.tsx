@@ -25,7 +25,8 @@ export const Table = ({ data }: TableProps) => {
           <tr key={item.id}>
             <td>
               <UserAvatar
-                src={item.picture.thumbnail}
+                image={item.picture.thumbnail}
+                largeImage={item.picture.large}
                 alt={`${item.name.first} ${item.name.last}`}
               />
             </td>

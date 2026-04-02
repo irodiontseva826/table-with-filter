@@ -1,26 +1,25 @@
 import { useState } from "react";
 import { Loader } from "../Loader";
+import { Tooltip } from "../Tooltip";
 import userDefault from "../../assets/user.jpg";
 import styles from "./UserAvatar.module.css";
 
 type UserAvatarProps = {
-  src: string;
+  image: string;
+  largeImage: string;
   alt: string;
 };
 
-export const UserAvatar = ({ src, alt }: UserAvatarProps) => {
+export const UserAvatar = ({ image, largeImage, alt }: UserAvatarProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
-  const [imgSrc, setImgSrc] = useState<string>(src);
-
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
+  const [imageSrc, setImageSrc] = useState<string>(image);
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   const handleError = () => {
     if (!hasError) {
       setHasError(true);
-      setImgSrc(userDefault);
+      setImageSrc(userDefault);
       setIsLoading(false);
     }
   };
@@ -29,13 +28,20 @@ export const UserAvatar = ({ src, alt }: UserAvatarProps) => {
     <div className={styles.avatarContainer}>
       {isLoading && <Loader size={40} />}
       <img
-        src={imgSrc}
+        src={imageSrc}
         alt={alt}
         className={styles.avatar}
         style={{ display: isLoading ? "none" : "block" }}
-        onLoad={handleLoad}
+        onLoad={() => setIsLoading(false)}
         onError={handleError}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
       />
+      {showTooltip && (
+        <div className={styles.tooltipWrapper}>
+          <Tooltip image={largeImage} alt={alt} />
+        </div>
+      )}
     </div>
   );
 };
