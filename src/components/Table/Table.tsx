@@ -1,5 +1,5 @@
+import { UserAvatar } from "../UserAvatar";
 import { formatDate } from "../../utils/formatDate";
-import userDefault from "../../assets/user.jpg";
 import type { User } from "../../types/user";
 import styles from "./Table.module.css";
 
@@ -24,13 +24,9 @@ export const Table = ({ data }: TableProps) => {
         {data.map((item) => (
           <tr key={item.id}>
             <td>
-              <img
+              <UserAvatar
                 src={item.picture.thumbnail}
                 alt={`${item.name.first} ${item.name.last}`}
-                className={styles.img}
-                onError={(e) => {
-                  e.currentTarget.src = userDefault;
-                }}
               />
             </td>
             <td>

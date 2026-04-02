@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Table } from "./components/Table";
+import { Loader } from "./components/Loader";
 import { fetchUsers } from "./api/users";
 import type { User } from "./types/user";
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,13 +29,17 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader size={100} />
+      </div>
+    );
   }
 
   return (
-    <>
+    <div className={styles.app}>
       <Table data={users} />
-    </>
+    </div>
   );
 }
 
