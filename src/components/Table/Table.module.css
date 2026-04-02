@@ -1,0 +1,27 @@
+.table {
+  background-color: var(--primary-purple);
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: var(--primary-dark);
+}
+
+.table td,
+.table th {
+  border: 1px solid var(--border-color);
+  padding: 15px;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: var(--primary-pink);
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+}

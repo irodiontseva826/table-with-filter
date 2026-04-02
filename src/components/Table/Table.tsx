@@ -1,4 +1,7 @@
+import { formatDate } from "../../utils/formatDate";
+import userDefault from "../../assets/user.jpg";
 import type { User } from "../../types/user";
+import styles from "./Table.module.css";
 
 type TableProps = {
   data: User[];
@@ -6,11 +9,11 @@ type TableProps = {
 
 export const Table = ({ data }: TableProps) => {
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
-          <th>Name</th>
           <th>Picture</th>
+          <th>Name</th>
           <th>Location</th>
           <th>Email</th>
           <th>Phone</th>
@@ -21,15 +24,24 @@ export const Table = ({ data }: TableProps) => {
         {data.map((item) => (
           <tr key={item.id}>
             <td>
+              <img
+                src={item.picture.thumbnail}
+                alt={`${item.name.first} ${item.name.last}`}
+                className={styles.img}
+                onError={(e) => {
+                  e.currentTarget.src = userDefault;
+                }}
+              />
+            </td>
+            <td>
               {item.name.first} {item.name.last}
             </td>
-            <td>{item.picture.thumbnail}</td>
             <td>
               {item.location.state}, {item.location.city}
             </td>
             <td>{item.email}</td>
             <td>{item.phone}</td>
-            <td>{item.registered.date}</td>
+            <td>{formatDate(item.registered.date)}</td>
           </tr>
         ))}
       </tbody>
