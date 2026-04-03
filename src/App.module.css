@@ -1,4 +1,7 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
@@ -10,4 +13,9 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+.noResults {
+  padding: 40px;
+  font-size: 20px;
 }

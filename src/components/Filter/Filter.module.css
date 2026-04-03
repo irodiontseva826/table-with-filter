@@ -1,0 +1,30 @@
+.filter {
+  display: flex;
+  gap: 6px;
+}
+
+.input {
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid var(--primary-pink);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--text);
+  background-color: transparent;
+}
+
+.button {
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: var(--primary-red-orange);
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--primary-orange);
+}
+
+.input:focus,
+.button:focus {
+  outline: none;
+}

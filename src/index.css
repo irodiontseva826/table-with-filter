@@ -11,10 +11,8 @@
   --border-color: rgb(224, 224, 224);
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-  color: var(--text);
 
+  color: var(--text);
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   text-rendering: optimizeLegibility;
@@ -30,4 +28,20 @@
 
 body {
   margin: 0;
+}
+
+input {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font: 18px/145% var(--sans);
+}
+
+button {
+  margin: 0;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  font: 18px/145% var(--sans);
+  cursor: pointer;
 }

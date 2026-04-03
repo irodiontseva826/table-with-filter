@@ -5,15 +5,15 @@ import userDefault from "../../assets/user.jpg";
 import styles from "./UserAvatar.module.css";
 
 type UserAvatarProps = {
-  image: string;
-  largeImage: string;
+  src: string;
+  largeSrc: string;
   alt: string;
 };
 
-export const UserAvatar = ({ image, largeImage, alt }: UserAvatarProps) => {
+export const UserAvatar = ({ src, largeSrc, alt }: UserAvatarProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
-  const [imageSrc, setImageSrc] = useState<string>(image);
+  const [imageSrc, setImageSrc] = useState<string>(src);
   const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   const handleError = () => {
@@ -37,9 +37,9 @@ export const UserAvatar = ({ image, largeImage, alt }: UserAvatarProps) => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       />
-      {showTooltip && (
+      {!hasError && showTooltip && (
         <div className={styles.tooltipWrapper}>
-          <Tooltip image={largeImage} alt={alt} />
+          <Tooltip image={largeSrc} alt={alt} />
         </div>
       )}
     </div>
